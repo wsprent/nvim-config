@@ -160,7 +160,12 @@ return {
       -- Only one of these is needed, not both.
       "nvim-telescope/telescope.nvim", -- optional
     },
-    config = true
+    config = function()
+      require('neogit').setup({})
+      vim.keymap.set('n', '<leader>gs', function()
+        require('neogit').open({ cwd = require('utils').get_cur_dir_or_cwd() })
+      end, { desc = 'NeoGit' })
+    end
   },
   {
     "ggandor/leap.nvim",
