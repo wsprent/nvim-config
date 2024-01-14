@@ -88,5 +88,11 @@ vim.keymap.set('n', '<leader>w', '<C-W>', { desc = '[W]indow' })
 
 vim.keymap.set('n', '<leader>wg', require('golden_ratio').autoresize)
 
+vim.keymap.set('n', '<leader>fb', '<Cmd>Ex %:h<Cr>', { desc = 'Explore current buffer dir' })
+
+vim.keymap.set('n', '<leader>fc', '<Cmd>Ex ~/.config/nvim<Cr>', { desc = 'Open Neovim config' })
+
+vim.keymap.set('n', '<leader>bb', '<Cmd>bprev<CR>', { desc = 'Pevious buffer' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
