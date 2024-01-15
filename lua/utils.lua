@@ -1,17 +1,18 @@
 local M = {}
 
-M.get_cur_dir_or_cwd = function ()
+M.get_cur_dir_or_cwd = function()
   local current_file = vim.api.nvim_buf_get_name(0)
-  local current_dir
   local cwd = vim.fn.getcwd()
   -- If the buffer is not associated with a file, return nil
   if current_file == '' then
-    current_dir = cwd
-  else
-    -- Extract the directory from the current file's path
-    current_dir = vim.fn.fnamemodify(current_file, ':h')
+    return cwd
   end
-  return current_dir
+
+  -- Extract the directory from the current file's path
+  if vim.fn.isdirectory(current_file) > 0 then
+    return current_file
+  end
+  return vim.fn.fnamemodify(current_file, ':h')
 end
 
 M.find_git_root = function()
